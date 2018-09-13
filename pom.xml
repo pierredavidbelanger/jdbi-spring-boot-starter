@@ -13,7 +13,7 @@
 
     <groupId>ca.pjer</groupId>
     <artifactId>jdbi-spring-boot-starter</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 
     <properties>
         <java.version>1.8</java.version>
@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <name>A Spring Boot Starter for JDBI</name>
+    <name>JDBI Spring Boot Starter</name>
     <description>This is a Spring Boot Starter for auto creating Jdbi and SqlObject</description>
     <url>https://github.com/pierredavidbelanger/jdbi-spring-boot-starter</url>
 
