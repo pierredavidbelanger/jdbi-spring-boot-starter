@@ -4,14 +4,14 @@ import org.jdbi.v3.core.Jdbi;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
+@SuppressWarnings("unused")
 public class SqlObjectFactoryBean implements FactoryBean, InitializingBean {
-
     private Jdbi jdbi;
     private Class type;
 
     private Object object;
 
-    public Jdbi getJdbi() {
+    private Jdbi getJdbi() {
         return jdbi;
     }
 
@@ -19,7 +19,7 @@ public class SqlObjectFactoryBean implements FactoryBean, InitializingBean {
         this.jdbi = jdbi;
     }
 
-    public Class getType() {
+    private Class getType() {
         return type;
     }
 

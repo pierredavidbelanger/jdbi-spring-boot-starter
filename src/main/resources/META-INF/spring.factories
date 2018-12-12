@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=ca.pjer.spring.boot.jdbi.autoconfigure.JdbiConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=ca.pjer.spring.boot.jdbi.JdbiConfiguration

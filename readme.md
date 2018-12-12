@@ -9,16 +9,16 @@ Add this to your Spring Boot project's `pom.xml`:
 <dependency>
     <groupId>ca.pjer</groupId>
     <artifactId>jdbi-spring-boot-starter</artifactId>
-    <version>0.2.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 Then after [configuring a data source](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-sql.html), you will be able to inject `Jdbi` like this:
 
 ```java
-import org.jdbi.v3.core.Jdbi
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.jdbi.v3.core.Jdbi;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 class MyService {
@@ -60,8 +60,8 @@ public interface MyDAO {
 Then you will now be able to inject them like this:
 
 ```java
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 class MyService {

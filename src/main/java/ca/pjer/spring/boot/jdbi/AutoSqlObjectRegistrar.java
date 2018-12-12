@@ -1,15 +1,11 @@
-package ca.pjer.spring.boot.jdbi.autoconfigure;
+package ca.pjer.spring.boot.jdbi;
 
-import ca.pjer.spring.boot.jdbi.AutoSqlObject;
-import ca.pjer.spring.boot.jdbi.SqlObjectFactoryBean;
 import org.jdbi.v3.sqlobject.SqlOperation;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
@@ -41,16 +37,18 @@ public class AutoSqlObjectRegistrar implements ImportBeanDefinitionRegistrar {
         for (BeanDefinition candidate : candidates) {
 
             String candidateClassName = candidate.getBeanClassName();
+            if (candidateClassName == null) {
+                continue;
+            }
 
-            AbstractBeanDefinition beanDefinition =
-                    BeanDefinitionBuilder.genericBeanDefinition(SqlObjectFactoryBean.class)
-                            .addPropertyReference("jdbi", "jdbi")
-                            .addPropertyValue("type", candidateClassName)
-                            .getBeanDefinition();
+            Class candidateClass = ClassUtils.resolveClassName(candidateClassName, ClassUtils.getDefaultClassLoader());
 
-            BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, candidateClassName);
+            GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+            beanDefinition.setBeanClass(SqlObjectFactoryBean.class);
+            beanDefinition.getPropertyValues().add("jdbi", new RuntimeBeanReference("jdbi"));
+            beanDefinition.getPropertyValues().add("type", candidateClass);
 
-            BeanDefinitionReaderUtils.registerBeanDefinition(holder, registry);
+            registry.registerBeanDefinition(candidateClassName, beanDefinition);
         }
     }
 }
