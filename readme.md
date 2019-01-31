@@ -9,7 +9,7 @@ Add this to your Spring Boot project's `pom.xml`:
 <dependency>
     <groupId>ca.pjer</groupId>
     <artifactId>jdbi-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 

@@ -35,7 +35,7 @@ public class MultiBeanMapper implements RowMapper<MultiBean> {
             int fromIndex = 0;
             for (int i = 0; i < columnNames.size(); i++) {
                 String columnName = columnNames.get(i);
-                if (columnName.equals("'|'")) {
+                if (columnName.equals("|") || columnName.equals("'|'") || columnName.equals("\"|\"")) {
                     mappers[typesIndex] = new SingleBeanMapper<>(types[typesIndex], fromIndex, i).specialize(rs, ctx);
                     typesIndex++;
                     fromIndex = i + 1;
