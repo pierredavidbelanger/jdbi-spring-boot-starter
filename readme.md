@@ -1,7 +1,10 @@
 # jdbi-spring-boot-starter
+
 This is a Spring Boot Starter for auto creating Jdbi and SqlObject
 
 ## Usage
+
+Here you can find a [working sample app](https://github.com/pierredavidbelanger/jdbi-spring-boot-starter-sample-app). 
 
 Add this to your Spring Boot project's `pom.xml`:
 
